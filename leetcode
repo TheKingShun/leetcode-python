@@ -95,10 +95,47 @@ return [0, 1].
             
   定义一个空字典，里面存放的是{第二个加数数值：第一个加数下标} 如果num 在 字典d中的key序列中存在则证明可以存在
 
+004：==================================================================================================================
+
+You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.
+
+You may assume the two numbers do not contain any leading zero, except the number 0 itself.
+
+Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
+Output: 7 -> 0 -> 8
+
+>>>你有两个非空链表表示两个非负整数。数字存储在相反的顺序和每个节点包含一个数字。
+添加两个数字并返回一个链表。你可能认为这两个数字不包含任何前导零,除了数字0本身。
+
+>>># Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+class Solution:
+    def addTwoNumbers(self, l1, l2):
+        """
+        :type l1: ListNode
+        :type l2: ListNode
+        :rtype: ListNode
+        """
+        carry = 0
+        root = n = ListNode(0)
+        while l1 or l2 or carry:
+            num1 = num2 = 0
+            if l1 : 
+                num1 = l1.val
+                l1 = l1.next
+            if l2 :
+                num2 = l2.val
+                l2 = l2.next
+            carry , val = divmod(num1+num2+carry,10)
+            n.next = ListNode(val)
+            n= n.next
+        return root.next
 
 
-
-
-
+>>>这里主要是对链表的熟悉熟悉链表的next方法（https://leetcode.com/problems/add-two-numbers/solution/）
 
 
