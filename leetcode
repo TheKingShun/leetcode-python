@@ -138,4 +138,40 @@ class Solution:
 
 >>>这里主要是对链表的熟悉熟悉链表的next方法（https://leetcode.com/problems/add-two-numbers/solution/）
 
+005：Given a string, find the length of the longest substring without repeating characters.
+
+Examples:
+
+Given "abcabcbb", the answer is "abc", which the length is 3.
+
+Given "bbbbb", the answer is "b", with the length of 1.
+
+Given "pwwkew", the answer is "wke", with the length of 3. Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
+　　给定一个字符串,查找最长的子串的长度没有重复字符。
+　　鉴于“abcabcbb”,答案是“abc”,长度是3。
+　　鉴于“bbbbb”,答案是“b”,与1的长度。
+　　鉴于“pwwkew”,答案是“wke”,与3的长度。注意,答案必须是一个字符串,“pwke”子序列而不是子字符串。
+
+>>>import heapq
+class Solution:
+    def lengthOfLongestSubstring(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        target_list = []
+        result_str = ""
+        if s :
+            for i in s:
+                if i not in result_str :
+                    result_str +=i  #将字符串添加
+                else :
+                    target_list.append(result_str)
+                    for index in range(len(result_str)):
+                       if result_str[index] == i :
+                            result_str = str(result_str.split(i)[-1])+i
+                            break
+        target_list.append(result_str)
+        return (len(max(target_list,key=lambda x:len(x))))
+
 
