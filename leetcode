@@ -206,27 +206,16 @@ The median is (2 + 3)/2 = 2.5
         :type nums1: List[int]
         :type nums2: List[int]
         :rtype: float
-        """  
-        if nums1 and nums2:
-            nums1.extend(nums2)
-            nums1.sort()
-            return self.getResult(nums1)
-        else:
-            if nums1:
-                 return self.getResult(nums1)
-            else:
-                 return self.getResult(nums2)
+        """
+        if not nums1 and not nums2: return None
+        join = nums1+nums2
+        join.sort()
+        mid = int(len(join)/2)
+        if len(join)%2 == 0: return (join[mid]+join[mid-1])/2
 
-    def getResult(self,nums):
-            length = len(nums)
-            if length % 2 == 0:
-                return ((nums[length//2]+nums[length//2-1])/2)
-            else :
-                if length > 1:
-                    return (float(nums[length//2])) 
-                else:return nums[0]
-             
-  >>>没啥好说的就是小学的中位数操作           
+        return join[mid]
+
+  >>>没啥好说的就是小学的中位数操作   先求中间值 在索引求中间值        
              
             
   
