@@ -217,7 +217,42 @@ The median is (2 + 3)/2 = 2.5
 
   >>>没啥好说的就是小学的中位数操作   先求中间值 在索引求中间值        
              
-            
+  
+ 007====================================================================================================
+ Given a string s, find the longest palindromic substring in s. You may assume that the maximum length of s is 1000.
+
+Example:
+
+Input: "babad"
+
+Output: "bab"
+
+Note: "aba" is also a valid answer.
+Example:
+
+Input: "cbbd"
+
+Output: "bb"
+
+最大回文字符串
+>>>class Solution:
+    # @return a string
+    def longestPalindrome(self, s):
+        if len(s)==0:
+        	return 0
+        maxLen=1
+        start=0
+        for i in xrange(len(s)):
+        	if i-maxLen >=1 and s[i-maxLen-1:i+1]==s[i-maxLen-1:i+1][::-1]:
+        		start=i-maxLen-1
+        		maxLen+=2
+        		continue
+
+        	if i-maxLen >=0 and s[i-maxLen:i+1]==s[i-maxLen:i+1][::-1]:
+        		start=i-maxLen
+        		maxLen+=1
+        return s[start:start+maxLen]
+        不好意思这个还不懂 等哪天我在研究下试试
   
   
   
